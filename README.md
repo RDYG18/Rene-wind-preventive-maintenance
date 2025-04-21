@@ -39,14 +39,15 @@ ReneWind’s analysis of 25,000 sensor-based records from wind turbines led to t
 ## Exploratory Data Analysis (EDA)
 
 <div align="justify">
-The dataset contains sensor-based operational records from wind turbines and was used to build a predictive model for generator failure. Each row represents a single reading from various turbine components. The dataset includes 25,000 rows and 40 anonymized predictor variables, split into 20,000 for training and 5,000 for testing. Due to confidentiality, the data was provided in a ciphered format. Some missing values were found in both the training and test sets, but no duplicate entries were present.
+The dataset contains sensor based operational records from wind turbines and was used to build a predictive model for generator failure. Each row represents a single reading from various turbine components. The dataset includes 25,000 rows and 40 variables 39 anonymized predictors and 1 non anonymized target variable, where a value of "1" denotes a failure event and "0" represents normal operation. The data is split into 20,000 rows for training and 5,000 for testing. Due to confidentiality, the dataset was provided in a ciphered format. Some missing values were found in both the training and test sets, but no duplicate entries were present.
 
-Although the exact variables are anonymized, it can be inferred that the dataset includes readings from sensors such as temperature sensors, accelerometers, anemometers, and vibration monitors, capturing both environmental conditions (e.g., wind speed, humidity) and mechanical performance across components like the gearbox, blades, tower, and brake systems.
+Although the exact predictors are anonymized, it can be inferred that the dataset includes readings from sensors such as temperature sensors, accelerometers, anemometers, and vibration monitors, capturing both environmental conditions (e.g., wind speed, humidity) and mechanical performance across components like the gearbox, blades, tower, and brake systems.
 </div>
 
 The EDA reveals that most of the sensors show a similar pattern in their boxplots: the presence of outliers on both tails of the distribution. These extreme sensor readings are common in real-world operational data and may contain valuable signals related to mechanical anomalies or early signs of failure, making them potentially informative rather than noise.
 
 Additionally, the histograms show that most variables exhibit skewed distributions, yet many maintain a bell-shaped tendency. Despite the skewness, the data retains a reasonable degree of symmetry and central tendency, which makes it suitable for analysis.
+</div>
 
 <div align="center" style="display: flex; justify-content: center; gap: 20px;">
   <img src="https://github.com/user-attachments/assets/589f940a-786d-47b5-9c87-0aeb4d4b80c1" width="300"/>
