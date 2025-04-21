@@ -78,6 +78,10 @@ XGBoost outperformed all other models, achieving the highest recall (83.8%) and 
 
 To address the class imbalance in the training data (833 failures vs. 14,167 non-failures), I applied SMOTE (Synthetic Minority Oversampling Technique) to generate synthetic examples of the minority class. After oversampling, the training set was perfectly balanced, with 14,167 instances for each class, totaling 28,334
 
+**Interpretation**:
+
+XGBoost remained the best-performing model after applying SMOTE. It achieved the highest recall on the validation set (89.2%) and showed the most consistent performance during cross-validation (99.0%).
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/fa7832b0-c6fe-43b3-a0ef-cc6d3070b95a" width="400"/>
   <img src="https://github.com/user-attachments/assets/d27ae540-c3ce-4029-a7c4-c43c36661d86" width="400"/>
