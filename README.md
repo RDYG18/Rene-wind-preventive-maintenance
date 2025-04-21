@@ -34,15 +34,24 @@ ReneWind is a renewable energy company specializing in the maintenance and opera
 ReneWind’s analysis of 25,000 sensor-based records from wind turbines led to the development of a predictive maintenance model aimed at preventing generator failures. Using XGBoost with oversampling, the final model achieved an F1-score of 86.0%, with 84.8% recall and 87.2% precision on test data—successfully balancing failure detection and false alarm reduction. Key sensor variables, including V36, V16, and V18, were identified as the most influential predictors of failure. By implementing the model in collaboration with the maintenance team, ReneWind can minimize unexpected breakdowns, reduce maintenance costs, and extend the lifespan of critical turbine components, ultimately improving operational reliability and supporting long-term sustainability goals.
 </div>
 
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/589f940a-786d-47b5-9c87-0aeb4d4b80c1" width="300"/>
-</div>
-
 ---
 
 ## Exploratory Data Analysis (EDA)
 
+<div align="justify">
+The dataset contains sensor-based operational records from wind turbines and was used to build a predictive model for generator failure. Each row represents a single reading from various turbine components. The dataset includes 25,000 rows and 40 anonymized predictor variables, split into 20,000 for training and 5,000 for testing. Due to confidentiality, the data was provided in a ciphered format. Some missing values were found in both the training and test sets, but no duplicate entries were present.
 
+Although the exact variables are anonymized, it can be inferred that the dataset includes readings from sensors such as temperature sensors, accelerometers, anemometers, and vibration monitors, capturing both environmental conditions (e.g., wind speed, humidity) and mechanical performance across components like the gearbox, blades, tower, and brake systems.
+</div>
+
+The EDA reveals that most of the sensors show a similar pattern in their boxplots: the presence of outliers on both tails of the distribution. These extreme sensor readings are common in real-world operational data and may contain valuable signals related to mechanical anomalies or early signs of failure, making them potentially informative rather than noise.
+
+Additionally, the histograms show that most variables exhibit skewed distributions, yet many maintain a bell-shaped tendency. Despite the skewness, the data retains a reasonable degree of symmetry and central tendency, which makes it suitable for analysis.
+
+<div align="center" style="display: flex; justify-content: center; gap: 20px;">
+  <img src="https://github.com/user-attachments/assets/589f940a-786d-47b5-9c87-0aeb4d4b80c1" width="300"/>
+  <img src="https://github.com/user-attachments/assets/80fbdd1f-f76a-459c-815d-36f34d89d451" width="700"/>
+</div>
 
 
 ---
