@@ -19,22 +19,16 @@
 - [Business Recommendations](#business-recommendations)
 - [Assumptions & Limitations](#assumptions--limitations)
 
-## Project background 
+## Project Background 
 
 <div align="justify">
-ReneWind is a company specialized in maintaining infrastructure for renewable energy generation, with a primary focus on wind turbines. The operations team had identified that generator failures led to significant costs due to unexpected replacements, unplanned downtime, and emergency inspections.
-
-As part of the Data Science team at ReneWind, I was tasked with supporting the Preventive Maintenance department by developing a predictive maintenance model. Our team worked closely with operations and engineering to leverage sensor data collected from various turbine components in order to analyze performance patterns and predict potential failures.
+ReneWind is a renewable energy company specializing in the maintenance and operation of wind turbine infrastructure. As part of its commitment to sustainability and operational efficiency, the company aimed to reduce the high costs associated with unexpected generator failures, which often lead to unplanned downtime, emergency repairs, and full equipment replacements. I partnered with the Preventive Maintenance and Engineering teams to build a machine learning model that predicts failures based on sensor data. The model prioritized minimizing false negatives to prevent costly breakdowns, while also reducing false positives to avoid unnecessary inspections. This solution enabled early failure detection and more efficient, data driven maintenance planning.
 </div>
 
-## Company Objective 
+## Executive Summary
 
 <div align="justify">
-ReneWind’s objective was to build a classification model capable of predicting generator failures in wind turbines before they occurred, using historical sensor data.
-
-The goal was to identify meaningful patterns that differentiated between at risk generators and those operating under normal conditions. Given the operational impact, I prioritized minimizing false negatives, as failing to detect an actual malfunction could result in costly generator replacements. At the same time, reducing false positives was also important to avoid unnecessary inspections and inefficient resource allocation.
-
-The final model was developed to support the Preventive Maintenance team by flagging high-risk turbines early, enabling timely interventions and more efficient maintenance planning.
+ReneWind’s analysis of 25,000 sensor-based records from wind turbines led to the development of a predictive maintenance model aimed at preventing generator failures. Using XGBoost with oversampling, the final model achieved an F1-score of 86.0%, with 84.8% recall and 87.2% precision on test data—successfully balancing failure detection and false alarm reduction. Key sensor variables, including V36, V16, and V18, were identified as the most influential predictors of failure. By implementing the model in collaboration with the maintenance team, ReneWind can minimize unexpected breakdowns, reduce maintenance costs, and extend the lifespan of critical turbine components, ultimately improving operational reliability and supporting long-term sustainability goals.
 </div>
 
 ---
