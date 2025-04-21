@@ -7,7 +7,7 @@
 - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 - [Insights Deep Dive](#insights-deep-dive)
   - [Model building (original data)](#model-building-original-data)
-  - [Model building (oversampled data)](#model-building-oversampled-data)
+  - [Model building oversampled data (SMOTE)](#model-building-oversampled-data-smote)
   - [Online Booking Behavior](#online-booking-behavior)
   - [Price Sensitivity & Cancellation](#price-sensitivity--cancellation)
   - [Seasonality & Booking Reliability](#seasonality--booking-reliability)
@@ -74,7 +74,7 @@ XGBoost outperformed all other models, achieving the highest recall (83.8%) and 
 
 ---
 
-## Model building (oversampled data)
+## Model building oversampled data (SMOTE)
 
 
 
