@@ -4,7 +4,7 @@
 
 - [Project Background](#project-background)
 - [Executive Summary](#executive-summary)
-- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-(eda))
+- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 - [Insights Deep Dive](#insights-deep-dive)
   - [Lead Time Impact](#lead-time-impact)
   - [Special Requests vs Cancellation](#special-requests-vs-cancellation)
