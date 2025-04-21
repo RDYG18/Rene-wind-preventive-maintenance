@@ -6,7 +6,7 @@
 - [Executive Summary](#executive-summary)
 - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 - [Insights Deep Dive](#insights-deep-dive)
-  - [Model building ( original data)](#model-building-original-data)
+  - [Model building (original data)](#model-building-original-data)
   - [Special Requests vs Cancellation](#special-requests-vs-cancellation)
   - [Online Booking Behavior](#online-booking-behavior)
   - [Price Sensitivity & Cancellation](#price-sensitivity--cancellation)
@@ -59,7 +59,7 @@ Additionally, the histograms show that most variables exhibit skewed distributio
 
 ## Insights Deep Dive
 
-Model building ( Original data) 
+## Model building (original data) 
 
 To identify the most suitable algorithm for predicting generator failures, I trained and evaluated six classification models using the original (imbalanced) dataset: Logistic Regression, Decision Tree, Random Forest, Bagging, AdaBoost, and XGBoost. The main metric used for evaluation was recall, as the cost of missing a real failure (false negative) is significantly higher than flagging a non-failure (false positive).
 
