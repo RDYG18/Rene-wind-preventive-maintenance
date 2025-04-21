@@ -61,9 +61,16 @@ Additionally, the histograms show that most variables exhibit skewed distributio
 
 ## Model building (original data) 
 
-To identify the most suitable algorithm for predicting generator failures, I trained and evaluated six classification models using the original (imbalanced) dataset: Logistic Regression, Decision Tree, Random Forest, Bagging, AdaBoost, and XGBoost. The main metric used for evaluation was recall, as the cost of missing a real failure (false negative) is significantly higher than flagging a non-failure (false positive).
+To identify the most suitable algorithm for predicting generator failures, I trained and evaluated six classification models using the original (imbalanced) dataset: **Logistic Regression, Decision Tree, Random Forest, Bagging, AdaBoost, and XGBoost**. The main metric used for evaluation was **recall**, as the cost of missing a real failure (false negative) is significantly higher than flagging a non failure (false positive).
 
-Each model was first assessed using 5-fold cross-validation on the training set and then validated on a held-out test set.
+**Interpretation**:
+
+XGBoost outperformed all other models, achieving the highest recall (83.8%) and the most consistent performance across cross-validation. Its ability to handle noisy and imbalanced sensor data made it the most effective and reliable choice for detecting turbine failures.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/01ee90bc-abed-4a78-9961-176f43e1c44c" width="400"/>
+  <img src="https://github.com/user-attachments/assets/0750b660-a17d-4894-8b63-848290e113d5" width="500"/>
+</p>
 
  ### Dataset Overview 
 
