@@ -1,5 +1,8 @@
 #  ReneWind - Preventive Maintenance in Renewable Energy
 
+![image](https://github.com/user-attachments/assets/e7e744e6-a3cd-494a-acd3-47122e917501)
+
+
 ## Table of Contents
 
 - [Project Background](#project-background)
@@ -9,6 +12,7 @@
   - [Model building (original data)](#model-building-original-data)
   - [Model building oversampled data (SMOTE)](#model-building-oversampled-data-smote)
   - [Model building undersampled data](#model-building-undersampled-data)
+- [Evaluation & Optimization ](#evaluation-&-optimization)
   - [Hyperparameter Tuning comparison](#hyperparameter-tuning-comparison)
   - [Final Model Evaluation on Test Set ](#final-model-evaluation-on-test-set)
   - [Future importances](#future-importances)
@@ -17,6 +21,7 @@
 - [Business Recommendations](#business-recommendations)
 - [Assumptions & Limitations](#assumptions--limitations)
 
+Evaluation & Optimization
 ## Project Background 
 
 <div align="justify">
@@ -36,15 +41,12 @@ ReneWind’s analysis of 25,000 sensor-based records from wind turbines led to t
 ## Exploratory Data Analysis (EDA)
 
 <div align="justify">
-The dataset contains sensor based operational records from wind turbines and was used to build a predictive model for generator failure. Each row represents a single reading from various turbine components. The dataset includes 25,000 rows and 40 variables 39 anonymized predictors and 1 non anonymized target variable, where a value of "1" denotes a failure event and "0" represents normal operation. The data is split into 20,000 rows for training and 5,000 for testing. Due to confidentiality, the dataset was provided in a ciphered format. Some missing values were found in both the training and test sets, but no duplicate entries were present.
+The dataset contains 25,000 sensor-based operational records from wind turbines, used to build a predictive model for generator failure. It includes 39 anonymized predictors and 1 target variable indicating failure events (1) or normal operation (0).
 
-Although the exact predictors are anonymized, it can be inferred that the dataset includes readings from sensors such as temperature sensors, accelerometers, anemometers, and vibration monitors, capturing both environmental conditions (e.g., wind speed, humidity) and mechanical performance across components like the gearbox, blades, tower, and brake systems.
+The data was split into 20,000 training and 5,000 testing rows. Due to confidentiality, variables were ciphered, though it is inferred that they represent readings from sensors such as temperature, vibration, and wind speed across key components (e.g., gearbox, blades, tower). Some missing values were present in both the training and test sets, but no duplicate entries were found.
 </div>
 
-The EDA reveals that most of the sensors show a similar pattern in their boxplots: the presence of outliers on both tails of the distribution. These extreme sensor readings are common in operational data and may contain valuable signals related to mechanical anomalies or early signs of failure, making them informative rather than noise.
-
-Additionally, the histograms show that most variables exhibit skewed distributions, yet many maintain a bell shaped tendency. Despite the skewness, the data retains a reasonable degree of symmetry and central tendency, which makes it suitable for analysis.
-
+EDA revealed frequent outliers across sensor readings likely reflecting early signs of mechanical anomalies rather than noise. Most variables show skewed but reasonably symmetric distributions, making the dataset suitable for predictive modeling.
 </div>
 
 <div align="center" style="display: flex; justify-content: center; gap: 20px;">
@@ -52,6 +54,14 @@ Additionally, the histograms show that most variables exhibit skewed distributio
   <img src="https://github.com/user-attachments/assets/80fbdd1f-f76a-459c-815d-36f34d89d451" width="700"/>
 </div>
 
+
+---
+
+##  Data Preprocessing 
+
+**Missing values**
+
+To handle missing values in both of the datasets, a median imputation strategy was applied using Scikit-learn’s **SimpleImputer**. The imputer was fitted on the training set to prevent data leakage, and the same transformation was then applied to the validation and test sets. **Median imputation** was chosen due to its robustness to outliers and its ability to maintain central tendency.
 
 ---
 
@@ -102,6 +112,8 @@ Random Forest was the best-performing model under undersampling, achieving the h
 </p>
 
 ---
+
+### Evaluation & Optimization
 
 ## Hyperparameter Tuning comparison
 
