@@ -8,7 +8,7 @@
 - [Insights Deep Dive](#insights-deep-dive)
   - [Model building (original data)](#model-building-original-data)
   - [Model building oversampled data (SMOTE)](#model-building-oversampled-data-smote)
-  - [Online Booking Behavior](#online-booking-behavior)
+  - [Model building undersampled data](#model-building-undersampled-data)
   - [Price Sensitivity & Cancellation](#price-sensitivity--cancellation)
   - [Seasonality & Booking Reliability](#seasonality--booking-reliability)
   - [Loyalty vs First-Time Guests](#loyalty-vs-first-time-guests)
@@ -65,7 +65,7 @@ To identify the most suitable algorithm for predicting generator failures, I tra
 
 **Interpretation**:
 
-XGBoost outperformed all other models, achieving the highest recall (83.8%) and the most consistent performance across cross-validation. Its ability to handle noisy and imbalanced sensor data made it the most effective and reliable choice for detecting turbine failures.
+XGBoost outperformed all other models, achieving the highest recall (83.8%) and the most consistent performance across cross validation. Its ability to handle noisy and imbalanced sensor data made it the most effective and reliable choice for detecting turbine failures.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/01ee90bc-abed-4a78-9961-176f43e1c44c" width="400"/>
@@ -76,17 +76,20 @@ XGBoost outperformed all other models, achieving the highest recall (83.8%) and 
 
 ## Model building oversampled data (SMOTE)
 
-To address the class imbalance in the training data (833 failures vs. 14,167 non-failures), I applied SMOTE (Synthetic Minority Oversampling Technique) to generate synthetic examples of the minority class. After oversampling, the training set was perfectly balanced, with 14,167 instances for each class, totaling 28,334
+To address the class imbalance in the training data (833 failures vs. 14,167 non failures), I applied SMOTE to generate synthetic examples of the minority class. After oversampling, the training set was perfectly balanced, with 14,167 instances for each class, totaling 28,334
 
 **Interpretation**:
 
-XGBoost remained the best-performing model after applying SMOTE. It achieved the highest recall on the validation set (89.2%) and showed the most consistent performance during cross-validation (99.0%).
+XGBoost remained the best-performing model after applying SMOTE. After oversampling, all models showed significant improvement—especially those that had previously struggled with imbalanced data, such as Logistic Regression. XGBoost continued to lead in performance, achieving the highest recall in both training (89.2%) and validation (99.0%), highlighting its robustness and strong generalization capability even after data augmentation.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/fa7832b0-c6fe-43b3-a0ef-cc6d3070b95a" width="400"/>
   <img src="https://github.com/user-attachments/assets/d27ae540-c3ce-4029-a7c4-c43c36661d86" width="400"/>
 </p>
 
+---
+
+## Model building undersampled data
 
 
  ### Dataset Overview 
