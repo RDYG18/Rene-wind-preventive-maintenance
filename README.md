@@ -80,7 +80,7 @@ To address the class imbalance in the training data (833 failures vs. 14,167 non
 
 **Interpretation**:
 
-XGBoost remained the best-performing model after applying SMOTE. After oversampling, all models showed significant improvement—especially those that had previously struggled with imbalanced data, such as Logistic Regression. XGBoost continued to lead in performance, achieving the highest recall in both training (89.2%) and validation (99.0%), highlighting its robustness and strong generalization capability even after data augmentation.
+XGBoost remained the best performing model after applying SMOTE. After oversampling, all models showed significant improvement—especially those that had previously struggled with imbalanced data, such as Logistic Regression. XGBoost continued to lead in performance, achieving the highest recall in both training (89.2%) and validation (99.0%), highlighting its robustness and strong generalization capability even after data augmentation.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/fa7832b0-c6fe-43b3-a0ef-cc6d3070b95a" width="400"/>
@@ -91,17 +91,60 @@ XGBoost remained the best-performing model after applying SMOTE. After oversampl
 
 ## Model building undersampled data
 
+To address class imbalance from the opposite direction, I applied Random Undersampling, which reduced the number of majority class samples (non-failures) to match the minority class (failures). This resulted in a balanced training set with 1,666 total observations (833 per class).
+The same six models were trained and evaluated using 5-fold cross-validation and tested on the same validation set using recall as the main performance metric.
 
- ### Dataset Overview 
+**Interpretation**:
 
-The dataset contains historical sensor readings from wind turbines. Each row represents a single turbine reading at a specific point in time, with the aim of identifying whether the unit is at risk of failure.
+Random Forest was the best-performing model under undersampling, achieving the highest recall on the validation set (89.9%) and strong consistency during cross-validation. It handled the reduced dataset well without losing its predictive power, confirming its reliability for failure detection even with limited data.
 
-The dataset includes 25,000 rows in total, split into 20,000 observations for training and 5,000 for testing. It contains 40 anonymized predictor variables, which represent various environmental and mechanical parameters (such as temperature, vibration, torque, etc.), although the exact nature of the features is undisclosed due to data confidentiality.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1adbb2a8-5888-46e5-913c-a9e43cbe9c67" width="400"/>
+  <img src="https://github.com/user-attachments/assets/c7d3dc65-2944-4d5c-aed3-3c6801002a5b" width="400"/>
+</p>
 
-The target variable is binary:
+**Hyperparameter Tuning comparison**
 
-1 indicates a failure occurred.
+After benchmarking the baseline models, I performed hyperparameter tuning using RandomizedSearchCV on selected algorithms that showed strong performance: AdaBoost, Random Forest, Gradient Boosting, and XGBoost. The goal was to further enhance recall and F1-score, especially under oversampled and undersampled settings.
 
-0 indicates normal operation.
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/e5ae5213-8e66-4e95-b712-68d26d7f87fa" width="800"/>
+</div>
 
+<br>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/6d23ea56-3461-4c05-82f6-b70c41f34b74" width="800"/>
+</div>
+
+**Interpretation**
+
+ XGBoost tuned with oversampled data (SMOTE) offered the best overall balance between recall and precision, achieving an F1-score of 0.883 on the validation set. This means it was not only able to detect most failure events (high recall), but also minimized false alarms (high precision), which is crucial in maintenance operations.
  
+
+**Final Model Evaluation on Test Set**
+
+After training, tuning, and validating the XGBoost model using oversampled data, I performed a final evaluation on the unseen test set to confirm its generalization performance.
+
+ <div align="center">
+  <img src="https://github.com/user-attachments/assets/ad932029-ebd1-4bda-942f-dd04867e7a7f" width="400"/>
+</div>
+
+- The final model maintained high recall, effectively identifying most actual failures.
+
+- Precision remained consistently strong, meaning few false alarms.
+
+- With an F1-score of 85.8%, the model confirmed its ability to balance detection sensitivity and reliability on completely unseen data.
+
+**Future importances**
+
+The final XGBoost model highlighted a small subset of sensor features as the most influential for predicting generator failures. The top five predictors V36, V16, V18, V26, and V14 stood out for their high relative importance.While feature names are anonymized due to confidentiality,they likely represent critical sensor readings related to turbine components or environmental factors such as temperature, pressure, or vibration.In other words, these features show strong patterns or behaviors that help the model detect failures in advance, making them key indicators for predictive maintenance.
+
+
+ <div align="center">
+  <img src="https://github.com/user-attachments/assets/dd97c911-cb3f-4688-b323-94b625ec5b68" width="400"/>
+</div>
+
+---
+
+ Pipeline Evaluation
