@@ -5,13 +5,14 @@
 - [Project Background](#project-background)
 - [Executive Summary](#executive-summary)
 - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-- [Insights Deep Dive](#insights-deep-dive)
+- [Model Building ](#model-building)
   - [Model building (original data)](#model-building-original-data)
   - [Model building oversampled data (SMOTE)](#model-building-oversampled-data-smote)
   - [Model building undersampled data](#model-building-undersampled-data)
   - [Hyperparameter Tuning comparison](#hyperparameter-tuning-comparison)
   - [Final Model Evaluation on Test Set ](#final-model-evaluation-on-test-set)
-  - [Loyalty vs First-Time Guests](#loyalty-vs-first-time-guests)
+  - [Future importances](#future-importances)
+  - [Pipeline Evaluation](#pipeline-evaluation)
 - [Modeling Approach](#modeling-approach)
   - [Logistic Regression](#logistic-regression)
   - [Decision Tree](#decision-tree)
@@ -21,6 +22,8 @@
 - [Assumptions & Limitations](#assumptions--limitations)
 
 ## Project Background 
+
+Pipeline Evaluation
 
 <div align="justify">
 ReneWind is a renewable energy company specializing in the maintenance and operation of wind turbine infrastructure. As part of its commitment to sustainability and operational efficiency, the company aimed to reduce the high costs associated with unexpected generator failures, which often lead to unplanned downtime, emergency repairs, and full equipment replacements. I partnered with the Preventive Maintenance and Engineering teams to build a machine learning model that predicts failures based on sensor data. The model prioritized minimizing false negatives to prevent costly breakdowns, while also reducing false positives to avoid unnecessary inspections. This solution enabled early failure detection and more efficient, data driven maintenance planning.
@@ -57,7 +60,7 @@ Additionally, the histograms show that most variables exhibit skewed distributio
 
 ---
 
-## Insights Deep Dive
+## Model Building 
 
 ## Model building (original data) 
 
@@ -103,6 +106,8 @@ Random Forest was the best-performing model under undersampling, achieving the h
   <img src="https://github.com/user-attachments/assets/c7d3dc65-2944-4d5c-aed3-3c6801002a5b" width="400"/>
 </p>
 
+---
+
 ## Hyperparameter Tuning comparison
 
 After benchmarking the baseline models, I performed hyperparameter tuning using RandomizedSearchCV on selected algorithms that showed strong performance: AdaBoost, Random Forest, Gradient Boosting, and XGBoost. The goal was to further enhance recall and F1-score, especially under oversampled and undersampled settings.
@@ -120,7 +125,8 @@ After benchmarking the baseline models, I performed hyperparameter tuning using 
 **Interpretation**
 
  XGBoost tuned with oversampled data (SMOTE) offered the best overall balance between recall and precision, achieving an F1-score of 0.883 on the validation set. This means it was not only able to detect most failure events (high recall), but also minimized false alarms (high precision), which is crucial in maintenance operations.
- 
+
+ ---
 
 ## Final Model Evaluation on Test Set 
 
@@ -136,7 +142,9 @@ After training, tuning, and validating the XGBoost model using oversampled data,
 
 - With an F1-score of 85.8%, the model confirmed its ability to balance detection sensitivity and reliability on completely unseen data.
 
-**Future importances**
+---
+
+## Future importances
 
 The final XGBoost model highlighted a small subset of sensor features as the most influential for predicting generator failures. The top five predictors V36, V16, V18, V26, and V14 stood out for their high relative importance.While feature names are anonymized due to confidentiality,they likely represent critical sensor readings related to turbine components or environmental factors such as temperature, pressure, or vibration.In other words, these features show strong patterns or behaviors that help the model detect failures in advance, making them key indicators for predictive maintenance.
 
@@ -147,4 +155,40 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 ---
 
- Pipeline Evaluation
+ ## Pipeline Evaluation
+
+ To ensure model reproducibility and scalability, the final XGBoost classifier was wrapped in a pipeline that includes missing value imputation (median strategy) and SMOTE-based oversampling. The pipeline was retrained and evaluated on the unseen test set.
+
+  <div align="center">
+  <img src="https://github.com/user-attachments/assets/97877d51-c14a-463d-ba25-05b3b4d1499d" width="400"/>
+</div>
+
+
+ These results confirm the final model’s robustness in real-world deployment scenarios, with strong generalization, reliable fault detection, and a controlled false positive rate.
+
+ ---
+
+ ## Insights 
+
+**The XGBoost model showed strong performance on unseen test data, achieving:**
+
+- An **accuracy of 98.4%**, meaning it made correct predictions in nearly all cases.
+
+- A **recall of 84.8%**, correctly detecting approximately **85 out of every 100 actual failures**, helping prevent unexpected breakdowns.
+
+- A **precision of 87.2%**, indicating that when the model predicts a failure, it is correct **87 times out of 100**, reducing unnecessary maintenance actions.
+
+- An overall **F1-score of 86.0%**, reflecting a solid balance between detecting **real issue** and minimizing **false alarms** making the model effective and practical for real-world predictive maintenance.
+
+**Five variables account for over 60% of model decision power:**
+
+- The **future variables** are those with the highest relative importance in the model, suggesting they are the most **influential in predicting failures** (V36, V16, V18, V26, and V14).
+  
+- These features exhibit strong patterns that allow the model to detect failures in advance, making them **key indicators** for predictive maintenance. As such, they should be prioritized for **sensor calibration**, **data quality assurance**, and **future diagnostics**.
+
+**The model generalized well to unseen data:**
+- The model performed just as well on new, **unseen data** as it did during validation. This means it didn't just memorize the training data it actually **learned useful patterns** that apply to real world cases. Because of this consistency, the model is reliable enough to be tested in a pilot phase within operations.
+
+---
+
+## Recomendations 
