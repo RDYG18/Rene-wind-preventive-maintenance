@@ -166,7 +166,7 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
  ## Insights 
 
-**The XGBoost model showed strong performance on unseen test data, achieving:**
+**The XGBoost model showed strong performance, achieving:**
 
 - An **accuracy of 98.4%**, meaning it made correct predictions in nearly all cases.
 
@@ -174,8 +174,7 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 - A **precision of 87.2%**, indicating that when the model predicts a failure, it is correct **87 times out of 100**, reducing unnecessary maintenance actions.
 
-- An overall **F1-score of 86.0%**, reflecting a solid balance between detecting **real issue** and minimizing **false alarms** making the model effective and practical for real-world predictive maintenance.
-
+- An overall **F1-score of 86.0%**, reflecting a solid balance between detecting **real issue** and minimizing **false alarms** making the model effective and practical for the company objective. 
 **Five variables account for over 60% of model decision power:**
 
 - The **future variables** are those with the highest relative importance in the model, suggesting they are the most **influential in predicting failures** (V36, V16, V18, V26, and V14).
@@ -183,6 +182,7 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 - These features exhibit strong patterns that allow the model to detect failures in advance, making them **key indicators** for predictive maintenance. As such, they should be prioritized for **sensor calibration**, **data quality assurance**, and **future diagnostics**.
 
 **The model generalized well to unseen data:**
+
 - The model performed just as well on new, **unseen data** as it did during validation. This means it didn't just memorize the training data it actually **learned useful patterns** that apply to real world cases. Because of this consistency, the model is reliable enough to be tested in a pilot phase within operations.
 
 ---
@@ -195,4 +195,24 @@ Use the model’s predictions to rank turbines by failure risk. Prioritize those
 
 **Integrate feedback from maintenance teams into the modeling process:**
 
-Actively collecting and reviewing technician feedback on the model’s predictions (e.g., “false alarms” or missed failures) can help refine the system over time. Establishing this feedback loop allows the Data Science team to better align predictions with real-world observations, adjust thresholds if needed, and continuously improve model relevance and adoption in the field.
+- Actively collecting and reviewing technician feedback on the model’s predictions ( “false alarms” or missed failures) can help refine the system over time. Establishing this feedback loop allows the Data Science team to better align predictions with real world observations, adjust thresholds if needed, and continuously improve model relevance and adoption in the field.
+
+- This also helps strengthen the collaboration between the Engineering, Maintenance, and Data Science teams by making it easier to understand the specific needs of each area. As a result, teams can stay aligned and work more efficiently toward shared operational goals.
+
+**Refine Sensor Strategy:**
+
+- Consider re evaluating sensor placement and maintenance on the most important features (V36, V16, etc.). Investigate whether sensors related to these features require more frequent calibration or if additional sensor types could enhance coverage.
+
+**Expand the Model to Multi Failure Classification:**
+
+Currently, the model performs binary classification to predict whether a failure will occur. While this provides valuable support for proactive maintenance planning, future iterations could significantly enhance operational impact by shifting to multi class classification predicting not only if a failure will happen, but also what type of failure ( gearbox, brake, generator).
+
+This upgrade would enable:
+
+- **Targeted maintenance actions**, tailored to the specific component at risk
+
+- **Optimized spare parts inventory**, reducing overstock and emergency procurement
+
+- **Minimized downtime**, by ensuring technicians arrive prepared with the right tools and parts
+
+- **Improved operational planning**, especially for remote or offshore wind farms
