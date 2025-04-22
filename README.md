@@ -13,11 +13,7 @@
   - [Final Model Evaluation on Test Set ](#final-model-evaluation-on-test-set)
   - [Future importances](#future-importances)
   - [Pipeline Evaluation](#pipeline-evaluation)
-- [Modeling Approach](#modeling-approach)
-  - [Logistic Regression](#logistic-regression)
-  - [Decision Tree](#decision-tree)
-  - [Threshold Optimization](#threshold-optimization)
-- [Model Performance Summary](#model-performance-summary)
+- [Insights](#insights)
 - [Business Recommendations](#business-recommendations)
 - [Assumptions & Limitations](#assumptions--limitations)
 
@@ -191,4 +187,12 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 ---
 
-## Recomendations 
+## Business Recommendations
+
+**Embed model output into the maintenance scheduling system:**
+
+Use the model’s predictions to rank turbines by failure risk. Prioritize those in the top decile for manual inspection or remote diagnostics. This allows field engineers to act before failures escalate to major breakdowns.
+
+**Integrate feedback from maintenance teams into the modeling process:**
+
+Actively collecting and reviewing technician feedback on the model’s predictions (e.g., “false alarms” or missed failures) can help refine the system over time. Establishing this feedback loop allows the Data Science team to better align predictions with real-world observations, adjust thresholds if needed, and continuously improve model relevance and adoption in the field.
