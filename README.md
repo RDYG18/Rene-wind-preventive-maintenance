@@ -12,7 +12,7 @@
   - [Model building (original data)](#model-building-original-data)
   - [Model building oversampled data (SMOTE)](#model-building-oversampled-data-smote)
   - [Model building undersampled data](#model-building-undersampled-data)
-- [Evaluation & Optimization ](#evaluation-&-optimization)
+- [Evaluation and Optimization ](#evaluation-and-optimization)
   - [Hyperparameter Tuning comparison](#hyperparameter-tuning-comparison)
   - [Final Model Evaluation on Test Set ](#final-model-evaluation-on-test-set)
   - [Future importances](#future-importances)
@@ -113,7 +113,7 @@ Random Forest was the best-performing model under undersampling, achieving the h
 
 ---
 
-### Evaluation & Optimization
+## Evaluation and Optimization
 
 ## Hyperparameter Tuning comparison
 
