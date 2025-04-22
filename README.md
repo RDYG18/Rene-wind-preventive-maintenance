@@ -41,9 +41,10 @@ The dataset contains sensor based operational records from wind turbines and was
 Although the exact predictors are anonymized, it can be inferred that the dataset includes readings from sensors such as temperature sensors, accelerometers, anemometers, and vibration monitors, capturing both environmental conditions (e.g., wind speed, humidity) and mechanical performance across components like the gearbox, blades, tower, and brake systems.
 </div>
 
-The EDA reveals that most of the sensors show a similar pattern in their boxplots: the presence of outliers on both tails of the distribution. These extreme sensor readings are common in real-world operational data and may contain valuable signals related to mechanical anomalies or early signs of failure, making them potentially informative rather than noise.
+The EDA reveals that most of the sensors show a similar pattern in their boxplots: the presence of outliers on both tails of the distribution. These extreme sensor readings are common in operational data and may contain valuable signals related to mechanical anomalies or early signs of failure, making them informative rather than noise.
 
-Additionally, the histograms show that most variables exhibit skewed distributions, yet many maintain a bell-shaped tendency. Despite the skewness, the data retains a reasonable degree of symmetry and central tendency, which makes it suitable for analysis.
+Additionally, the histograms show that most variables exhibit skewed distributions, yet many maintain a bell shaped tendency. Despite the skewness, the data retains a reasonable degree of symmetry and central tendency, which makes it suitable for analysis.
+
 </div>
 
 <div align="center" style="display: flex; justify-content: center; gap: 20px;">
