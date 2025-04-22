@@ -153,12 +153,11 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
  To ensure model reproducibility and scalability, the final XGBoost classifier was wrapped in a pipeline that includes missing value imputation (median strategy) and SMOTE-based oversampling. The pipeline was retrained and evaluated on the unseen test set.
 
+ These results confirm the final model’s robustness in real-world deployment scenarios, with strong generalization, reliable fault detection, and a controlled false positive rate.
+ 
   <div align="center">
   <img src="https://github.com/user-attachments/assets/97877d51-c14a-463d-ba25-05b3b4d1499d" width="400"/>
 </div>
-
-
- These results confirm the final model’s robustness in real-world deployment scenarios, with strong generalization, reliable fault detection, and a controlled false positive rate.
 
  ---
 
