@@ -9,8 +9,8 @@
   - [Model building (original data)](#model-building-original-data)
   - [Model building oversampled data (SMOTE)](#model-building-oversampled-data-smote)
   - [Model building undersampled data](#model-building-undersampled-data)
-  - [Price Sensitivity & Cancellation](#price-sensitivity--cancellation)
-  - [Seasonality & Booking Reliability](#seasonality--booking-reliability)
+  - [Hyperparameter Tuning comparison](#hyperparameter-tuning-comparison)
+  - [Final Model Evaluation on Test Set ](#final-model-evaluation-on-test-set)
   - [Loyalty vs First-Time Guests](#loyalty-vs-first-time-guests)
 - [Modeling Approach](#modeling-approach)
   - [Logistic Regression](#logistic-regression)
@@ -103,7 +103,7 @@ Random Forest was the best-performing model under undersampling, achieving the h
   <img src="https://github.com/user-attachments/assets/c7d3dc65-2944-4d5c-aed3-3c6801002a5b" width="400"/>
 </p>
 
-**Hyperparameter Tuning comparison**
+## Hyperparameter Tuning comparison
 
 After benchmarking the baseline models, I performed hyperparameter tuning using RandomizedSearchCV on selected algorithms that showed strong performance: AdaBoost, Random Forest, Gradient Boosting, and XGBoost. The goal was to further enhance recall and F1-score, especially under oversampled and undersampled settings.
 
@@ -122,7 +122,7 @@ After benchmarking the baseline models, I performed hyperparameter tuning using 
  XGBoost tuned with oversampled data (SMOTE) offered the best overall balance between recall and precision, achieving an F1-score of 0.883 on the validation set. This means it was not only able to detect most failure events (high recall), but also minimized false alarms (high precision), which is crucial in maintenance operations.
  
 
-**Final Model Evaluation on Test Set**
+## Final Model Evaluation on Test Set 
 
 After training, tuning, and validating the XGBoost model using oversampled data, I performed a final evaluation on the unseen test set to confirm its generalization performance.
 
