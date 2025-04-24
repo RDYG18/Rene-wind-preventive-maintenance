@@ -1,4 +1,4 @@
-#  ReneWind - Preventive Maintenance in Renewable Energy
+#  ReneWind - Preventive Maintenance 
 
 ![image](https://github.com/user-attachments/assets/e7e744e6-a3cd-494a-acd3-47122e917501)
 
@@ -236,6 +236,8 @@ However, due to **confidentiality limitations** and the lack of context regardin
 ---
 
 See the csv files: [here](https://github.com/RDYG18/Rene-wind-predictive-maintenance/tree/main/data).
+
+See Python data cleaning, visualization, modeling and analysis: 
 
 
 
