@@ -171,11 +171,9 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 **The XGBoost model showed strong performance, achieving:**
 
-- An **accuracy of 98.1%**, meaning it made correct predictions in nearly all cases.
-
 - The final model achieved a **recall of 84.8%**, compared to an average of **64.2%** across initial baseline models without sampling or tuning. This represents an improvement of approximately **1.3×** in failure detection, significantly increasing the model’s ability to identify real breakdowns before they occur.
 
-- A **precision of 82.1%**, indicating that when the model predicts a failure, it is correct **82 times out of 100**, reducing unnecessary maintenance actions.
+- Alsow achieved a **precision of 82.1%**, compared to an average of **61.98%** across initial baseline models without sampling or tuning. This represents an improvement of approximately **1.3×** in reducing false alarms, enabling more efficient maintenance decisions and minimizing unnecessary interventions.
 
 - An overall **F1-score of 83.4%**, reflecting a solid balance between detecting **real issue** and minimizing **false alarms** making the model effective and practical for the company objective.
 
@@ -222,4 +220,23 @@ This upgrade would enable:
 ---
 
 ## Assumptions and Limitations
+
+**Missing values**
+
+- Missing values in the **V1 and V2 variables** were addressed using **standard imputation techniques** during preprocessing. However, an **alternative approach** worth considering would be to **retain these values as missing**. This suggestion stems from the hypothesis that the **simultaneous absence** of V1 and V2 could carry **predictive value** potentially signaling a **system failure or malfunction**.
+
+- Although this approach was **not implemented** in the current version of the model, it represents a **valuable direction for future iterations**. In such cases, leveraging algorithms like **XGBoost**, which **natively handle missing values**, could enable the model to **learn from the missingness itself as an informative signal**, rather than treating it as noise.
+
+**EDA analysis**
+
+The EDA analysis revealed that some histograms are significantly **skewed**. This raises the hypothesis that **highly skewed variables may be associated with failure rates or system breakdowns**, and therefore could be relevant predictors. These variables were flagged for closer attention in the modeling phase.
+
+However, due to **confidentiality limitations** and the lack of context regarding the **specific types of sensors or features being analyzed**, it is difficult to validate this assumption. Without knowing what each variable represents, interpreting the skewness becomes speculative. 
+
+---
+
+See the raw data: 
+
+
+
 
