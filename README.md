@@ -40,9 +40,9 @@ ReneWind’s analysis of 25,000 sensor-based records from wind turbines led to t
 ## Exploratory Data Analysis (EDA)
 
 <div align="justify">
-The dataset contains 25,000 sensor-based operational records from wind turbines, used to build a predictive model for generator failure. It includes 39 anonymized predictors and 1 target variable indicating failure events (1) or normal operation (0).
-
-The data was split into 20,000 training and 5,000 testing rows. Due to confidentiality, variables were ciphered, though it is inferred that they represent readings from sensors such as temperature, vibration, and wind speed across key components (e.g., gearbox, blades, tower). Some missing values were present in both the training and test sets, but no duplicate entries were found.
+The dataset contains 25,000 sensor based operational records from wind turbines, used to build a predictive model for generator failure. It includes 39 anonymized predictor variables and one target variable indicating failure events (1) or normal operation (0).
+The data was split into 20,000 training and 5,000 testing rows. Due to confidentiality, variables were ciphered, though it is inferred that they represent readings from sensors such as temperature, vibration, and wind speed across key components (e.g., gearbox, blades, tower).
+The data types are mostly floats, except for the target variable, which is an integer. Some missing values were present in both the training and test sets and will be addressed in the preprocessing stage discussed later. No duplicate entries were found.
 </div>
 
 EDA revealed frequent outliers across sensor readings likely reflecting early signs of mechanical anomalies rather than noise. Most variables show skewed but reasonably symmetric distributions, making the dataset suitable for predictive modeling.
@@ -64,34 +64,33 @@ To handle missing values in both of the datasets, a median imputation strategy w
 
 ---
 
-## Model Building 
+## Models Building 
+
+To identify the most suitable algorithm for predicting generator failures, I trained and evaluated seven classification models—Logistic **Regression, Bagging, Random Forest, Gradient Boosting, AdaBoost, XGBoost, and Decision Tree** across three datasets: the original imbalanced dataset, an oversampled version, and an undersampled version.
+
+---
 
 ## Model building (original data) 
 
-To identify the most suitable algorithm for predicting generator failures, I trained and evaluated six classification models using the original (imbalanced) dataset: **Logistic Regression, Decision Tree, Random Forest, Bagging, AdaBoost, and XGBoost**. The main metric used for evaluation was **recall**, as the cost of missing a real failure (false negative) is significantly higher than flagging a non failure (false positive).
-
-**Interpretation**:
-
-XGBoost outperformed all other models, achieving the highest recall (83.8%) and the most consistent performance across cross validation. Its ability to handle noisy and imbalanced sensor data made it the most effective and reliable choice for detecting turbine failures.
+All seven classification models performed well in terms of recall, with consistent results across cross validation and validation sets indicating strong generalization capability.
+Among them, **XGBoost** delivered the best performance, achieving the highest recall **83.7%** and showing the most stable results across folds. As shown in the boxplot, the highest recall was achieved by XGBoost, followed by Decision Tree and Random Forest
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/01ee90bc-abed-4a78-9961-176f43e1c44c" width="400"/>
-  <img src="https://github.com/user-attachments/assets/0750b660-a17d-4894-8b63-848290e113d5" width="500"/>
+  <img src="https://github.com/user-attachments/assets/453d9f32-56c6-4150-a951-6332f5576509" width="400"/>
+  <img src="https://github.com/user-attachments/assets/54f4ea36-1357-4bee-b669-074a7ac52e39" width="500"/>
 </p>
 
 ---
 
 ## Model building oversampled data (SMOTE)
 
-To address the class imbalance in the training data (833 failures vs. 14,167 non failures), I applied SMOTE to generate synthetic examples of the minority class. After oversampling, the training set was perfectly balanced, with 14,167 instances for each class, totaling 28,334
+To address the class imbalance in the training data **(833 failures vs. 14,167 non failures)**, I applied SMOTE to generate synthetic examples of the minority class. After oversampling, the training set was perfectly balanced, with 14,167 instances for each class, totaling 28,334
 
-**Interpretation**:
-
-XGBoost remained the best performing model after applying SMOTE. After oversampling, all models showed significant improvement—especially those that had previously struggled with imbalanced data, such as Logistic Regression. XGBoost continued to lead in performance, achieving the highest recall in both training (89.2%) and validation (99.0%), highlighting its robustness and strong generalization capability even after data augmentation.
+After applying oversampling, all models showed notable improvement especially those that previously struggled with class imbalance, such as **Logistic Regression and AdaBoost**. In this scenario, **XGBoost** maintained the highest recall, closely followed by **Gradient Boosting**. XGBoost achieved a recall of **99%** on the training set and **89%** on the validation set. Even the lowest performing model reached a recall of 81%, demonstrating the overall effectiveness of the oversampling strategy.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fa7832b0-c6fe-43b3-a0ef-cc6d3070b95a" width="400"/>
-  <img src="https://github.com/user-attachments/assets/d27ae540-c3ce-4029-a7c4-c43c36661d86" width="400"/>
+  <img src="https://github.com/user-attachments/assets/731524f0-50f8-4d34-b7e2-22cc6f0032e6" width="400"/>
+  <img src="https://github.com/user-attachments/assets/e6f4e198-d5d1-4e5f-80d5-19a9a0d6532f" width="400"/>
 </p>
 
 ---
@@ -101,13 +100,12 @@ XGBoost remained the best performing model after applying SMOTE. After oversampl
 To address class imbalance from the opposite direction, I applied Random Undersampling, which reduced the number of majority class samples (non-failures) to match the minority class (failures). This resulted in a balanced training set with 1,666 total observations (833 per class).
 The same six models were trained and evaluated using 5-fold cross-validation and tested on the same validation set using recall as the main performance metric.
 
-**Interpretation**:
 
 Random Forest was the best-performing model under undersampling, achieving the highest recall on the validation set (89.9%) and strong consistency during cross-validation. It handled the reduced dataset well without losing its predictive power, confirming its reliability for failure detection even with limited data.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1adbb2a8-5888-46e5-913c-a9e43cbe9c67" width="400"/>
-  <img src="https://github.com/user-attachments/assets/c7d3dc65-2944-4d5c-aed3-3c6801002a5b" width="400"/>
+  <img src="https://github.com/user-attachments/assets/a12cc0d9-27bf-446e-904f-e71480df30d2" width="400"/>
+  <img src="https://github.com/user-attachments/assets/efe62ff2-94a6-461d-bec6-a522d8a7071a" width="400"/>
 </p>
 
 ---
