@@ -86,7 +86,7 @@ Among them, **XGBoost** delivered the best performance, achieving the highest re
 
 To address the class imbalance in the training data **(833 failures vs. 14,167 non failures)**, I applied SMOTE to generate synthetic examples of the minority class. After oversampling, the training set was perfectly balanced, with 14,167 instances for each class, totaling 28,334
 
-After applying oversampling, all models showed notable improvement especially those that previously struggled with class imbalance, such as **Logistic Regression and AdaBoost**. In this scenario, **XGBoost** maintained the highest recall, closely followed by **Gradient Boosting**. XGBoost achieved a recall of **99%** on the training set and **89%** on the validation set. Even the lowest performing model reached a recall of 81%, demonstrating the overall effectiveness of the oversampling strategy.
+After applying oversampling, all models showed notable improvement especially those that previously struggled with class imbalance, such as **Logistic Regression and AdaBoost**. In this scenario, **Gradient Boosting** have the highest recall, closely followed by **XGBoost**. Gradient Boosting achieved a recall of **89.5%** on the validation set. Even the lowest performing model reached a recall of 81%, demonstrating the overall effectiveness of the oversampling strategy. 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/731524f0-50f8-4d34-b7e2-22cc6f0032e6" width="400"/>
@@ -97,11 +97,9 @@ After applying oversampling, all models showed notable improvement especially th
 
 ## Model building undersampled data
 
-To address class imbalance from the opposite direction, I applied Random Undersampling, which reduced the number of majority class samples (non-failures) to match the minority class (failures). This resulted in a balanced training set with 1,666 total observations (833 per class).
-The same six models were trained and evaluated using 5-fold cross-validation and tested on the same validation set using recall as the main performance metric.
-
-
-Random Forest was the best-performing model under undersampling, achieving the highest recall on the validation set (89.9%) and strong consistency during cross-validation. It handled the reduced dataset well without losing its predictive power, confirming its reliability for failure detection even with limited data.
+To address class imbalance from the opposite direction, I applied Random Undersampling, which reduced the number of majority class samples (non failures) to match the minority class (failures). This resulted in a balanced training set with 1,666 total observations (833 per class).
+ 
+Among the three approaches tested (original, oversampled, and undersampled), the undersampled model delivered the best recall, reaching up to 89.8% on the validation set with the Gradient Boosting model. 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a12cc0d9-27bf-446e-904f-e71480df30d2" width="400"/>
@@ -112,23 +110,21 @@ Random Forest was the best-performing model under undersampling, achieving the h
 
 ## Evaluation and Optimization
 
+ After evaluating the baseline performance of all models, I selected the top performing ones for further improvement through hyperparameter tuning. These models demonstrated strong recall scores and consistent validation performance.
+
 ## Hyperparameter Tuning comparison
 
-After benchmarking the baseline models, I performed hyperparameter tuning using RandomizedSearchCV on selected algorithms that showed strong performance: AdaBoost, Random Forest, Gradient Boosting, and XGBoost. The goal was to further enhance recall and F1-score, especially under oversampled and undersampled settings.
+In the final model, there was noticeable overfitting in the training performance. However, when comparing validation results, the best model achieved a **recall of 89%**, obtained with **XGBoost tuned on the oversampled dataset**. This model also reached the highest precision among the four tested models, with **82%**. The focus on recall and precision aligns with the project’s objective: to accurately detect true failures while minimizing false positives.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/e5ae5213-8e66-4e95-b712-68d26d7f87fa" width="800"/>
+  <img src="https://github.com/user-attachments/assets/936733bd-1f46-4f9e-873f-e56b80c873e2" width="900"/>
 </div>
 
 <br>
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/6d23ea56-3461-4c05-82f6-b70c41f34b74" width="800"/>
+  <img src="https://github.com/user-attachments/assets/f232afd5-04e1-43ac-b814-3a5e1e1e10ea" width="900"/>
 </div>
-
-**Interpretation**
-
- XGBoost tuned with oversampled data (SMOTE) offered the best overall balance between recall and precision, achieving an F1-score of 0.883 on the validation set. This means it was not only able to detect most failure events (high recall), but also minimized false alarms (high precision), which is crucial in maintenance operations.
 
  ---
 
@@ -136,37 +132,37 @@ After benchmarking the baseline models, I performed hyperparameter tuning using 
 
 After training, tuning, and validating the XGBoost model using oversampled data, I performed a final evaluation on the unseen test set to confirm its generalization performance.
 
- <div align="center">
-  <img src="https://github.com/user-attachments/assets/ad932029-ebd1-4bda-942f-dd04867e7a7f" width="400"/>
-</div>
-
 - The final model maintained high recall, effectively identifying most actual failures.
 
 - Precision remained consistently strong, meaning few false alarms.
 
-- With an F1-score of 85.8%, the model confirmed its ability to balance detection sensitivity and reliability on completely unseen data.
+- With an F1-score of 83.7%, the model confirmed its ability to balance detection sensitivity and reliability on completely unseen data.
+
+ <div align="center">
+  <img src="https://github.com/user-attachments/assets/3c06118d-bd1a-4f8b-94e4-18152db2469a" width="400"/>
+</div>
 
 ---
 
 ## Future importances
 
-The final XGBoost model highlighted a small subset of sensor features as the most influential for predicting generator failures. The top five predictors V36, V16, V18, V26, and V14 stood out for their high relative importance.While feature names are anonymized due to confidentiality,they likely represent critical sensor readings related to turbine components or environmental factors such as temperature, pressure, or vibration.In other words, these features show strong patterns or behaviors that help the model detect failures in advance, making them key indicators for predictive maintenance.
+The final XGBoost model highlighted a small subset of sensor features as the most influential for predicting generator failures. The top five predictors V36, V26, V14, V16, and V18 stood out for their high relative importance.While feature names are anonymized due to confidentiality,they likely represent critical sensor readings related to turbine components or environmental factors such as temperature, pressure, or vibration.In other words, these features show strong patterns or behaviors that help the model detect failures in advance, making them key indicators for predictive maintenance.
 
 
  <div align="center">
-  <img src="https://github.com/user-attachments/assets/dd97c911-cb3f-4688-b323-94b625ec5b68" width="400"/>
+  <img src="https://github.com/user-attachments/assets/21fb5702-ea59-4c88-8ea8-a8c790e1810a" width="400"/>
 </div>
 
 ---
 
  ## Pipeline Evaluation
 
- To ensure model reproducibility and scalability, the final XGBoost classifier was wrapped in a pipeline that includes missing value imputation (median strategy) and SMOTE-based oversampling. The pipeline was retrained and evaluated on the unseen test set.
+ To ensure model reproducibility and scalability, the final XGBoost classifier was wrapped in a pipeline that includes missing value imputation (median strategy) and SMOTE based oversampling. The pipeline was retrained and evaluated on the unseen test set.
 
- These results confirm the final model’s robustness in real-world deployment scenarios, with strong generalization, reliable fault detection, and a controlled false positive rate.
+ These results confirm the final model’s robustness in real world deployment scenarios, with strong generalization, reliable fault detection, and a controlled false positive rate.
  
   <div align="center">
-  <img src="https://github.com/user-attachments/assets/97877d51-c14a-463d-ba25-05b3b4d1499d" width="400"/>
+  <img src="https://github.com/user-attachments/assets/acea22ab-8a3c-4653-b6e9-af04475dfb6e" width="400"/>
 </div>
 
  ---
@@ -175,16 +171,17 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 **The XGBoost model showed strong performance, achieving:**
 
-- An **accuracy of 98.4%**, meaning it made correct predictions in nearly all cases.
+- An **accuracy of 98.1%**, meaning it made correct predictions in nearly all cases.
 
 - A **recall of 84.8%**, correctly detecting approximately **85 out of every 100 actual failures**, helping prevent unexpected breakdowns.
 
-- A **precision of 87.2%**, indicating that when the model predicts a failure, it is correct **87 times out of 100**, reducing unnecessary maintenance actions.
+- A **precision of 82.1%**, indicating that when the model predicts a failure, it is correct **82 times out of 100**, reducing unnecessary maintenance actions.
 
-- An overall **F1-score of 86.0%**, reflecting a solid balance between detecting **real issue** and minimizing **false alarms** making the model effective and practical for the company objective. 
+- An overall **F1-score of 83.4%**, reflecting a solid balance between detecting **real issue** and minimizing **false alarms** making the model effective and practical for the company objective.
+
 **Five variables account for over 60% of model decision power:**
 
-- The **future variables** are those with the highest relative importance in the model, suggesting they are the most **influential in predicting failures** (V36, V16, V18, V26, and V14).
+- The **future variables** are those with the highest relative importance in the model, suggesting they are the most **influential in predicting failures** (V36, V26, V16, V14, and V18).
   
 - These features exhibit strong patterns that allow the model to detect failures in advance, making them **key indicators** for predictive maintenance. As such, they should be prioritized for **sensor calibration**, **data quality assurance**, and **future diagnostics**.
 
@@ -208,7 +205,7 @@ Use the model’s predictions to rank turbines by failure risk. Prioritize those
 
 **Refine Sensor Strategy:**
 
-- Consider re evaluating sensor placement and maintenance on the most important features (V36, V16, etc.). Investigate whether sensors related to these features require more frequent calibration or if additional sensor types could enhance coverage.
+- Consider re evaluating sensor placement and maintenance on the most important features (V36, V26, etc.). Investigate whether sensors related to these features require more frequent calibration or if additional sensor types could enhance coverage.
 
 **Expand the Model to Multi Failure Classification:**
 
