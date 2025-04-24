@@ -24,7 +24,7 @@
 ## Project Background 
 
 <div align="justify">
-ReneWind is a company working on improving the machinery/processes involved in the production of wind energy using machine learning. As part of its commitment to sustainability and operational efficiency, the company aimed to reduce the high costs associated with unexpected generator failures, which often lead to unplanned downtime, emergency repairs, and full equipment replacements. I partnered with the Preventive Maintenance and Engineering teams to build various classification models that predicts failures based on sensor data. The model prioritized minimizing false negatives to prevent costly breakdowns, while also reducing false positives to avoid unnecessary inspections. This solution enabled early failure detection and more efficient, data driven maintenance planning.
+ReneWind is a company working on improving the machinery/processes involved in the production of wind energy using machine learning. As part of its commitment to sustainability and operational efficiency, the company aimed to reduce the high costs associated with unexpected generator failures, which often lead to unplanned downtime, emergency repairs, and full equipment replacements. I as part of the data sciences team partnered with the Preventive Maintenance and Engineering teams to build various classification models that predicts failures based on sensor data. The model prioritized minimizing false negatives to prevent costly breakdowns, while also reducing false positives to avoid unnecessary inspections. This solution enabled early failure detection and more efficient, data driven maintenance planning.
 </div>
 
 ---
@@ -32,7 +32,7 @@ ReneWind is a company working on improving the machinery/processes involved in t
 ## Executive Summary
 
 <div align="justify">
-ReneWind’s analysis of 25,000 sensor-based records from wind turbines led to the development of a predictive maintenance model aimed at preventing generator failures. Using XGBoost with oversampling, the final model achieved an F1-score of 86.0%, with 84.8% recall and 87.2% precision on test data—successfully balancing failure detection and false alarm reduction. Key sensor variables, including V36, V16, and V18, were identified as the most influential predictors of failure. By implementing the model in collaboration with the maintenance team, ReneWind can minimize unexpected breakdowns, reduce maintenance costs, and extend the lifespan of critical turbine components, ultimately improving operational reliability and supporting long-term sustainability goals.
+ReneWind’s analysis of 25,000 sensor based records from wind turbines led to the development of a predictive maintenance model aimed at preventing generator failures. Using XGBoost with oversampling, the final model achieved an F1-score of 83.4%, with 84.8% recall and 82% precision on test data successfully balancing failure detection and false alarm reduction. Key sensor variables, including V36, V26, and V16, were identified as the most influential predictors of failure. By implementing the model in collaboration with the maintenance team, ReneWind can detect up to 85 out of every 100 real failures before they occur, reduce maintenance costs, and extend the lifespan of critical turbine components, ultimately improving operational reliability and supporting long term sustainability goals.
 </div>
 
 ---
@@ -66,7 +66,7 @@ To handle missing values in both of the datasets, a median imputation strategy w
 
 ## Models Building 
 
-To identify the most suitable algorithm for predicting generator failures, I trained and evaluated seven classification models—Logistic **Regression, Bagging, Random Forest, Gradient Boosting, AdaBoost, XGBoost, and Decision Tree** across three datasets: the original imbalanced dataset, an oversampled version, and an undersampled version.
+To identify the most suitable algorithm for predicting generator failures, I trained and evaluated seven classification models Logistic **Regression, Bagging, Random Forest, Gradient Boosting, AdaBoost, XGBoost, and Decision Tree** across three datasets: the original imbalanced dataset, an oversampled version, and an undersampled version.
 
 ---
 
@@ -173,7 +173,7 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 - An **accuracy of 98.1%**, meaning it made correct predictions in nearly all cases.
 
-- A **recall of 84.8%**, correctly detecting approximately **85 out of every 100 actual failures**, helping prevent unexpected breakdowns.
+- The final model achieved a **recall of 84.8%**, compared to an average of **64.2%** across initial baseline models without sampling or tuning. This represents an improvement of approximately **1.3×** in failure detection, significantly increasing the model’s ability to identify real breakdowns before they occur.
 
 - A **precision of 82.1%**, indicating that when the model predicts a failure, it is correct **82 times out of 100**, reducing unnecessary maintenance actions.
 
@@ -181,9 +181,7 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 **Five variables account for over 60% of model decision power:**
 
-- The **future variables** are those with the highest relative importance in the model, suggesting they are the most **influential in predicting failures** (V36, V26, V16, V14, and V18).
-  
-- These features exhibit strong patterns that allow the model to detect failures in advance, making them **key indicators** for predictive maintenance. As such, they should be prioritized for **sensor calibration**, **data quality assurance**, and **future diagnostics**.
+- The **future variables** are those with the highest relative importance in the model, suggesting they are the most **influential in predicting failures** (V36, V26, V16, V14, and V18). As such, they should be prioritized for **sensor calibration**, **data quality assurance**, and **future diagnostics**.
 
 **The model generalized well to unseen data:**
 
