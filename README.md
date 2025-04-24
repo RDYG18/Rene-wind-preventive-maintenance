@@ -218,3 +218,8 @@ This upgrade would enable:
 - **Minimized downtime**, by ensuring technicians arrive prepared with the right tools and parts
 
 - **Improved operational planning**, especially for remote or offshore wind farms
+
+---
+
+## Assumptions and Limitations
+
