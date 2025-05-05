@@ -8,7 +8,8 @@
 - [Project Background](#project-background)
 - [Executive Summary](#executive-summary)
 - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-- [Model Building ](#model-building)
+- [Data Preprocessing](#data-preprocessing)
+- [Models Building](#models-building)
   - [Model building (original data)](#model-building-original-data)
   - [Model building oversampled data (SMOTE)](#model-building-oversampled-data-smote)
   - [Model building undersampled data](#model-building-undersampled-data)
@@ -56,7 +57,7 @@ EDA revealed frequent outliers across sensor readings likely reflecting early si
 
 ---
 
-##  Data Preprocessing 
+## Data Preprocessing 
 
 **Missing values**
 
