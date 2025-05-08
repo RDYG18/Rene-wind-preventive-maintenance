@@ -115,13 +115,10 @@ Among the three approaches tested (original, oversampled, and undersampled), the
 
 ## Hyperparameter Tuning comparison
 
-In the final model, there was noticeable overfitting in the training performance. However, when comparing validation results, the best model achieved a **recall of 89%**, obtained with **XGBoost tuned on the oversampled dataset**. This model also reached the highest precision among the four tested models, with **82%**. The focus on recall and precision aligns with the project’s objective: to accurately detect true failures while minimizing false positives.
-
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/936733bd-1f46-4f9e-873f-e56b80c873e2" width="900"/>
+<div align="justify">
+In the final model, there was overfitting in the training performance. However, when comparing validation results, the best model achieved a **recall of 89%**, obtained with **XGBoost tuned on the oversampled dataset**. This model also reached the highest precision among the four tested models, with **82%**. The focus on recall and precision aligns with the project’s objective: to accurately detect true failures while minimizing false positives.
 </div>
 
-<br>
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/f232afd5-04e1-43ac-b814-3a5e1e1e10ea" width="900"/>
