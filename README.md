@@ -21,6 +21,7 @@
 - [Insights](#insights)
 - [Business Recommendations](#business-recommendations)
 - [Assumptions & Limitations](#assumptions--limitations)
+- [Setup Instructions](#setup-instructions)
 
 ## Project Background 
 
@@ -217,7 +218,7 @@ This upgrade would enable:
 
 ---
 
-## Assumptions and Limitations
+## Assumptions & Limitations
 
 **Missing values**
 
