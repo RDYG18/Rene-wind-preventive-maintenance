@@ -148,7 +148,7 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 
  <div align="center">
-  <img src="https://github.com/user-attachments/assets/21fb5702-ea59-4c88-8ea8-a8c790e1810a" width="400"/>
+  <img src="https://github.com/user-attachments/assets/670b3141-74c4-4537-a0b1-69d3ee27f744" width="400"/>
 </div>
 
 ---
