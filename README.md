@@ -21,6 +21,7 @@
 - [Insights](#insights)
 - [Business Recommendations](#business-recommendations)
 - [Assumptions & Limitations](#assumptions--limitations)
+- [Setup Instructions](#setup-instructions)
 
 ## Project Background 
 
@@ -148,7 +149,7 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 
  <div align="center">
-  <img src="https://github.com/user-attachments/assets/21fb5702-ea59-4c88-8ea8-a8c790e1810a" width="400"/>
+  <img src="https://github.com/user-attachments/assets/670b3141-74c4-4537-a0b1-69d3ee27f744" width="400"/>
 </div>
 
 ---
@@ -169,9 +170,9 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 **The XGBoost model showed strong performance, achieving:**
 
-- The final model achieved a **recall of 84.8%**, compared to an average of **64.2%** across initial baseline models without sampling or tuning. This represents an improvement of approximately **1.3×** in failure detection, significantly increasing the model’s ability to identify real breakdowns before they occur.
+- The final model achieved a **recall of 84.8%**, compared to an average of **64.2 %** across initial baseline models without sampling or tuning. This represents an improvement of approximately **1.3×** in failure detection, significantly increasing the model’s ability to identify real breakdowns before they occur.
 
-- Alsow achieved a **precision of 82.1%**, compared to an average of **61.98%** across initial baseline models without sampling or tuning. This represents an improvement of approximately **1.3×** in reducing false alarms, enabling more efficient maintenance decisions and minimizing unnecessary interventions.
+- Alsow achieved a **precision of 82.1%**. This represents an improvement in reducing **false alarms**, enabling more efficient maintenance decisions and minimizing unnecessary interventions.
 
 - An overall **F1-score of 83.4%**, reflecting a solid balance between detecting **real issue** and minimizing **false alarms** making the model effective and practical for the company objective.
 
@@ -217,7 +218,7 @@ This upgrade would enable:
 
 ---
 
-## Assumptions and Limitations
+## Assumptions & Limitations
 
 **Missing values**
 
@@ -233,9 +234,11 @@ However, due to **confidentiality limitations** and the lack of context regardin
 
 ---
 
-See the csv files: [here](https://github.com/RDYG18/Rene-wind-predictive-maintenance/tree/main/data).
+## Setup Instructions
 
-See Python data cleaning, visualization, modeling and analysis: 
+nstallation
+
+To install the required libraries, run:
 
 
 
