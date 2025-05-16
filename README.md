@@ -171,7 +171,7 @@ The final XGBoost model highlighted a small subset of sensor features as the mos
 
 - The final model achieved a **recall of 84.8%**, compared to an average of **64.2 %** across initial baseline models without sampling or tuning. This represents an improvement of approximately **1.3×** in failure detection, significantly increasing the model’s ability to identify real breakdowns before they occur.
 
-- Alsow achieved a **precision of 82.1%**. This represents an improvement in reducing false alarms, enabling more efficient maintenance decisions and minimizing unnecessary interventions.
+- Alsow achieved a **precision of 82.1%**. This represents an improvement in reducing **false alarms**, enabling more efficient maintenance decisions and minimizing unnecessary interventions.
 
 - An overall **F1-score of 83.4%**, reflecting a solid balance between detecting **real issue** and minimizing **false alarms** making the model effective and practical for the company objective.
 
