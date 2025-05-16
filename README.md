@@ -233,9 +233,11 @@ However, due to **confidentiality limitations** and the lack of context regardin
 
 ---
 
-See the csv files: [here](https://github.com/RDYG18/Rene-wind-predictive-maintenance/tree/main/data).
+## Setup Instructions
 
-See Python data cleaning, visualization, modeling and analysis: 
+nstallation
+
+To install the required libraries, run:
 
 
 
